@@ -1,0 +1,34 @@
+{
+  "about": "<p>Danish Lukawski is a creative entrepreneur and visionary leader in Singapore's dynamic creative industry. As the Founder of DANAMIC, he has built a reputation for innovative thinking and exceptional creative execution.</p><p>With a passion for bringing bold ideas to life, Danish leads a team of talented creatives who work with brands to create meaningful and impactful campaigns. His approach combines strategic thinking with artistic vision, resulting in work that resonates with audiences and drives results.</p>",
+  
+  "media": [
+    {
+      "title": "Creative Leadership in Singapore",
+      "source": "Example Publication",
+      "date": "2024",
+      "description": "Featured article discussing Danish's approach to creative agency management and his vision for the industry in Singapore.",
+      "url": "#",
+      "screenshot": ""
+    },
+    {
+      "title": "Innovative Campaign Spotlight",
+      "source": "Industry Magazine",
+      "date": "2024",
+      "description": "Recognition for groundbreaking work with major brands, showcasing DANAMIC's creative capabilities.",
+      "url": "#",
+      "screenshot": ""
+    },
+    {
+      "title": "Entrepreneur Profile",
+      "source": "Business Weekly",
+      "date": "2023",
+      "description": "In-depth profile exploring Danish's journey as a founder and his impact on Singapore's creative landscape.",
+      "url": "#",
+      "screenshot": ""
+    }
+  ],
+  
+  "danamic": "<p><strong>DANAMIC</strong> is a full-service creative agency based in Singapore, founded by Danish Lukawski. The agency specializes in brand strategy, creative campaigns, digital experiences, and visual storytelling.</p><p>At DANAMIC, we believe in the power of creative thinking to transform brands and connect with audiences in meaningful ways. Our team brings together diverse talents in design, strategy, content creation, and digital innovation to deliver exceptional results for our clients.</p><p>From startups to established brands, DANAMIC partners with companies across industries to bring their vision to life through compelling creative work.</p>",
+  
+  "contact": "<p>Interested in collaborating or learning more?</p><p>Connect via <a href=\"https://www.linkedin.com/in/danishlukawski/\" target=\"_blank\" rel=\"noopener noreferrer\">LinkedIn</a> or visit <a href=\"https://danamic.sg\" target=\"_blank\" rel=\"noopener noreferrer\">danamic.sg</a></p>"
+}
