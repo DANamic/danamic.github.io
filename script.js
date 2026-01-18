@@ -1,11 +1,32 @@
+// Helper function to safely create HTML elements with text content
+function createElementWithText(tag, text, className = '') {
+    const element = document.createElement(tag);
+    if (className) element.className = className;
+    element.textContent = text;
+    return element;
+}
+
+// Helper function to safely set HTML content (for trusted internal content only)
+function setTrustedHTML(elementId, htmlContent) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.innerHTML = htmlContent;
+    }
+}
+
 // Load content from JSON and populate the page
 async function loadContent() {
     try {
         const response = await fetch('content.json');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
 
-        // Populate About section
-        document.getElementById('about-text').innerHTML = data.about;
+        // Populate About section (trusted internal content)
+        setTrustedHTML('about-text', data.about);
 
         // Populate Media Coverage section
         const mediaGrid = document.getElementById('media-grid');
@@ -14,31 +35,46 @@ async function loadContent() {
             data.media.forEach(item => {
                 const mediaItem = document.createElement('a');
                 mediaItem.className = 'media-item';
-                mediaItem.href = item.url;
+                mediaItem.href = item.url || '#';
                 mediaItem.target = '_blank';
                 mediaItem.rel = 'noopener noreferrer';
 
-                let content = `
-                    <h3>${item.title}</h3>
-                    <span class="source">${item.source}</span>
-                    ${item.date ? `<span class="date">${item.date}</span>` : ''}
-                    <p>${item.description}</p>
-                `;
+                // Create title
+                const title = createElementWithText('h3', item.title || '');
+                mediaItem.appendChild(title);
 
-                if (item.screenshot) {
-                    content += `<img src="${item.screenshot}" alt="${item.title}" class="screenshot">`;
+                // Create source
+                const source = createElementWithText('span', item.source || '', 'source');
+                mediaItem.appendChild(source);
+
+                // Create date if present
+                if (item.date) {
+                    const date = createElementWithText('span', item.date, 'date');
+                    mediaItem.appendChild(date);
                 }
 
-                mediaItem.innerHTML = content;
+                // Create description
+                const description = createElementWithText('p', item.description || '');
+                mediaItem.appendChild(description);
+
+                // Add screenshot if present
+                if (item.screenshot) {
+                    const img = document.createElement('img');
+                    img.src = item.screenshot;
+                    img.alt = item.title || '';
+                    img.className = 'screenshot';
+                    mediaItem.appendChild(img);
+                }
+
                 mediaGrid.appendChild(mediaItem);
             });
         }
 
-        // Populate DANAMIC section
-        document.getElementById('danamic-text').innerHTML = data.danamic;
+        // Populate DANAMIC section (trusted internal content)
+        setTrustedHTML('danamic-text', data.danamic);
 
-        // Populate Contact section
-        document.getElementById('contact-text').innerHTML = data.contact;
+        // Populate Contact section (trusted internal content)
+        setTrustedHTML('contact-text', data.contact);
 
     } catch (error) {
         console.error('Error loading content:', error);
